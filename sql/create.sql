@@ -6,8 +6,8 @@ CREATE TABLE Services (
 CREATE TABLE Questions (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     question_text VARCHAR(255) NOT NULL,
-    characteristic_id INT NOT NULL,
-    FOREIGN KEY (characteristic_id) REFERENCES Characteristics (id)
+    service_id INT NOT NULL,
+    FOREIGN KEY (service_id) REFERENCES Services (id)
 );
 
 CREATE TABLE Answers (

@@ -6,7 +6,7 @@ $(document).ready(() => {
     })
 
     $('.end_test_btn').on('click', () => {
-        if($('.check_input:checked').length == 200) {
+        if($('.check_input:checked').length == 30) {
             $('.end_test_btn').prop('type', 'submit');
         } else {
             $('.end_test_btn').prop('type', 'button');
@@ -22,7 +22,7 @@ $(document).ready(() => {
               ].join('')
               alertPlaceholder.append(wrapper)
             }
-            alert(`Вы не ответили на ${200 - $('.check_input:checked').length} вопросов`, 'danger')
+            alert(`Вы не ответили на ${30 - $('.check_input:checked').length} вопросов`, 'danger')
         }
     })
 });

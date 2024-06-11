@@ -1,8 +1,6 @@
 <?php
     require("../php/conn.php");
-    session_start();
-    $questions = $conn->query("SELECT Questions.* FROM Questions;");
-    $has_answers = $conn->query("SELECT * FROM UserAnswers WHERE user_id = " . $_SESSION['user_id']);
+    $questions = $conn->query("SELECT * FROM Questions;");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +13,6 @@
     <script src="../js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-    <?= $has_answers->num_rows > 0 ? '<script>window.location.href = "endTest.php";</script>' : '' ?>
     <div class="container">
     <div id="liveAlertPlaceholder"></div>
         <form class="questions mx-auto p-1" method='POST' action='../php/calculatePoints.php'>

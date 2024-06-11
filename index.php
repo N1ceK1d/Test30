@@ -1,13 +1,5 @@
 <?php
   require("php/conn.php");
-  $res = mysqli_fetch_assoc($conn->query("SELECT * FROM Companies LIMIT 1"));
-
-  $company_id = $res['id'];
-
-  if(isset($_GET['company_id']))
-  {
-    $company_id = base64_decode($_GET['company_id']);
-  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
