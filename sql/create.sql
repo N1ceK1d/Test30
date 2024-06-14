@@ -1,13 +1,20 @@
-CREATE TABLE Services (
+CREATE TABLE Blocks (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL
+    name VARCHAR(255) NOT NULL,
+    max_points INT NOT NULL
 );
 
 CREATE TABLE Questions (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    question_text VARCHAR(255) NOT NULL,
-    service_id INT NOT NULL,
-    FOREIGN KEY (service_id) REFERENCES Services (id)
+    question_text VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE QuestionsBlocks (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    question_id INT NOT NULL,
+    block_id INT NOT NULL,
+    FOREIGN KEY (question_id) REFERENCES Questions (id),
+    FOREIGN KEY (block_id) REFERENCES Blocks (id)
 );
 
 CREATE TABLE Answers (
