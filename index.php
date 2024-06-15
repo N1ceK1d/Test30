@@ -16,7 +16,7 @@
     <div class="container">
         <h1>Анализ найма и управления персоналом</h1>
     <div id="liveAlertPlaceholder"></div>
-        <form class="questions mx-auto p-1" method='POST' action='php/calculatePoints.php'>
+        <form class="questions mx-auto p-1" method='POST' action='pages/endTest.php'>
             <?php foreach($questions as $question):?>
                 <div class="question bg-light border rounded p-1 w-75 my-1">
                     <p class='question-text'><b><?= $question['id'] ?>. </b><?= $question['question_text'] ?></p>
