@@ -40,3 +40,9 @@ CREATE TABLE UsersData (
     company_name VARCHAR(255) NOT NULL,
     user_time DATETIME
 );
+
+CREATE TABLE ResultsTexts (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    result_text LONGTEXT NOT NULL,
+    result_points LONGTEXT NOT NULL
+);

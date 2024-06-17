@@ -12,6 +12,6 @@ VALUES ('$first_name', '$last_name', '$middle_name', '$phone', '$company_name', 
 
 if($conn->query($sql))
 {
-    header("Location: ../pages/endTest.php"); 
+    header("Location: ../pages/end.php"); 
 }
 ?>
