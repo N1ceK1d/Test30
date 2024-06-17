@@ -108,3 +108,6 @@ VALUES
 (28, 'Да', 28, 1),  (58, 'Нет', 28, 0),
 (29, 'Да', 29, 1),  (59, 'Нет', 29, 0),
 (30, 'Да', 30, 1),  (60, 'Нет', 30, 0);
+
+INSERT INTO Admins (login, password)
+VALUES ('admin', '$2y$10$uYv65GFFJ5peU8A7kODs...IJVqHnmBDBMfvcU1nWLRRNFqaB10hK');

@@ -24,3 +24,19 @@ CREATE TABLE Answers (
     points INT NOT NULL,
     FOREIGN KEY (question_id) REFERENCES Questions (id)
 );
+
+CREATE TABLE Admins (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    login VARCHAR(255) NOT NULL,
+    password LONGTEXT NOT NULL
+);
+
+CREATE TABLE UsersData (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    middle_name VARCHAR(255) NOT NULL,
+    phone VARCHAR(255) NOT NULL,
+    company_name VARCHAR(255) NOT NULL,
+    user_time DATETIME
+);
