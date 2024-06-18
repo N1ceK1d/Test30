@@ -31,22 +31,21 @@ $all_block_scores = [];
 $blocks = $conn->query("SELECT * FROM Blocks");
 while ($block = mysqli_fetch_assoc($blocks)) {
     $block_id = $block['id'];
-    $block_name = $block['name'];
     $scores = getBlockScores($block_id, $conn);
-    $all_block_scores[$block_name] = $scores;
+    $all_block_scores[$block_id] = $scores; // Используем id в качестве ключа массива
     // Выводим результаты по каждому блоку
-    // echo "Блок: " . $block_name . " - Набранные баллы: " . $scores['total'] . " из " . $scores['max'] . "<br>";
+    // echo "Блок: " . $block_id . " - Набранные баллы: " . $scores['total'] . " из " . $scores['max'] . "<br>";
 }
 
 // Находим минимальное количество баллов
 $min_score = min(array_column($all_block_scores, 'total'));
 
-// Выводим все блоки с минимальным количеством баллов
-foreach ($all_block_scores as $block_name => $scores) {
-    if ($scores['total'] == $min_score) {
-        // echo "Блок с минимальным количеством баллов: " . $block_name . " - Набранные баллы: " . $scores['total'] . " из " . $scores['max'] . "<br>";
-    }
-}
+// // Выводим все блоки с минимальным количеством баллов
+// foreach ($all_block_scores as $block_name => $scores) {
+//     if ($scores['total'] == $min_score) {
+//         echo "Блок с минимальным количеством баллов: " . $block_name . " - Набранные баллы: " . $scores['total'] . " из " . $scores['max'] . "<br>";
+//     }
+// }
 
 // Переменная для хранения общего количества баллов
 $total_score = 0;
@@ -86,16 +85,16 @@ foreach ($_POST['question'] as $key => $value) {
             <div class="body p-1 bg-white w-100">
                 <h2>Тест: Анализ найма и управления персоналом</h2><br>
                 <p>Всего: <label class='bg-primary text-white p-1 rounded'><?php echo $total ?> / 30</label></p>
-                <p>
-                Спасибо за ваши ответы!<br><br>
-                Результаты теста:<br><br>
-                
-                
-                
-                
-                
-                
-                </p>
+                <p>Спасибо за ваши ответы!</p>
+                <p>Результаты теста:</p>
+                <?php foreach ($all_block_scores as $block_name => $scores) : ?>
+                    <?php if ($scores['total'] == $min_score) :?>
+                        <div class="result-item bg-light border rounded p-1 my-1">
+                            <?php $res = mysqli_fetch_assoc($conn->query("SELECT * FROM ResultsTexts INNER JOIN Blocks ON ResultsTexts.id = Blocks.id WHERE Blocks.id = $block_name"));?>
+                            <p><?= $res['result_text']; ?></p>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach;?>
             </div>
         </div>
         <div class="mb-3 text-center">
@@ -147,5 +146,7 @@ foreach ($_POST['question'] as $key => $value) {
 </html>
 
 <?php
-function getResult();
+function getResult($points) {
+
+}
 ?>

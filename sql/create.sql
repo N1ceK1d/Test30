@@ -44,5 +44,6 @@ CREATE TABLE UsersData (
 CREATE TABLE ResultsTexts (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     result_text LONGTEXT NOT NULL,
-    result_points LONGTEXT NOT NULL
+    block_id INT NOT NULL,
+    FOREIGN KEY (block_id) REFERENCES Blocks (id)
 );

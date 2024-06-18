@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Тест IQ</h1>
+        <h1>Анализ найма и управления персоналом</h1>
         <?php require("../../php/admin_header.php") ?>
     </div>
 </body>
