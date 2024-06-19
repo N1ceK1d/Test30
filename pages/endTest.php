@@ -86,12 +86,21 @@ foreach ($_POST['question'] as $key => $value) {
                 <h2>Тест: Анализ найма и управления персоналом</h2><br>
                 <p>Всего: <label class='bg-primary text-white p-1 rounded'><?php echo $total ?> / 30</label></p>
                 <p>Спасибо за ваши ответы!</p>
-                <p>Результаты теста:</p>
+                <p><b>Результаты теста:</b></p>
                 <?php foreach ($all_block_scores as $block_name => $scores) : ?>
                     <?php if ($scores['total'] == $min_score) :?>
                         <div class="result-item bg-light border rounded p-1 my-1">
                             <?php $res = mysqli_fetch_assoc($conn->query("SELECT * FROM ResultsTexts INNER JOIN Blocks ON ResultsTexts.id = Blocks.id WHERE Blocks.id = $block_name"));?>
                             <p><?= $res['result_text']; ?></p>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach;?>
+                <p><b>Возможные решения:</b></p>
+                <?php foreach ($all_block_scores as $block_name => $scores) : ?>
+                    <?php if ($scores['total'] == $min_score) :?>
+                        <div class="result-item bg-light border rounded p-1 my-1">
+                            <?php $res = mysqli_fetch_assoc($conn->query("SELECT * FROM Decisions INNER JOIN Blocks ON Decisions.id = Blocks.id WHERE Blocks.id = $block_name"));?>
+                            <p><?= $res['decision_text']; ?></p>
                         </div>
                     <?php endif; ?>
                 <?php endforeach;?>

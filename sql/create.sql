@@ -47,3 +47,10 @@ CREATE TABLE ResultsTexts (
     block_id INT NOT NULL,
     FOREIGN KEY (block_id) REFERENCES Blocks (id)
 );
+
+CREATE TABLE Decisions (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    decision_text LONGTEXT NOT NULL,
+    block_id INT NOT NULL,
+    FOREIGN KEY (block_id) REFERENCES Blocks (id)
+);
