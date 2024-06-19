@@ -27,9 +27,9 @@
             <form action="../../php/update_questions.php" method="post">
                 <?php foreach ($conn->query("SELECT * FROM UsersData ORDER BY user_time DESC") as $row): ?>
                     <div class="question-item border rounded p-1 my-1 bg-light w-75">
-                        <h2><?= $row['last_name']." ".$row['first_name']." ".$row['middle_name']; ?></h2>
+                        <h2><?= $row['first_name']; ?></h2>
                         <p>Телефон: <?= $row['phone']; ?></p>
-                        <p>Компания: <?= $row['company_name']; ?></p>
+                        <p>Количество сотрудников: <?= $row['employees_count']; ?></p>
                         <i class='bi bi-trash-fill text-danger' role='button' data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="<?php echo $row['id'];?>"></i>
                     </div>
                 <?php endforeach; ?>

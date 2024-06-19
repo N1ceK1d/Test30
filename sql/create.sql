@@ -34,10 +34,8 @@ CREATE TABLE Admins (
 CREATE TABLE UsersData (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(255) NOT NULL,
-    last_name VARCHAR(255) NOT NULL,
-    middle_name VARCHAR(255) NOT NULL,
     phone VARCHAR(255) NOT NULL,
-    company_name VARCHAR(255) NOT NULL,
+    employees_count INT NOT NULL,
     user_time DATETIME
 );
 

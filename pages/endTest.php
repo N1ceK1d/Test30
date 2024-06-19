@@ -121,24 +121,16 @@ foreach ($_POST['question'] as $key => $value) {
           <div class="modal-body">
             <form action="../php/addPerson.php" method="post" class=''>
                 <div class="mb-3">
-                    <label for="">Фамилия</label>
-                    <input class='form-control' type="text" name="last_name">
-                </div>
-                <div class="mb-3">
                     <label for="">Имя</label>
-                    <input class='form-control' type="text" name="first_name">
-                </div>
-                <div class="mb-3">
-                    <label for="">Отчество</label>
-                    <input class='form-control' type="text" name="middle_name">
+                    <input class='form-control' required='true' type="text" name="first_name">
                 </div>
                 <div class="mb-3">
                     <label for="">Номер телефона</label>
-                    <input class='form-control phone' type="text" name="phone">
+                    <input class='form-control phone' required='true' type="text" name="phone">
                 </div>
                 <div class="mb-3">
-                    <label for="">Название компании</label>
-                    <input class='form-control' type="text" name="company_name">
+                    <label for="">Количество сотрудников</label>
+                    <input class='form-control' required='true' type="number" name="company_name" min='1'>
                 </div>
                 <input type="submit" class='btn btn-primary' value="Оставить заявку">
             </form>
