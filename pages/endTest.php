@@ -59,7 +59,7 @@ foreach ($all_block_scores as $block_scores) {
 
 $total = 0;
 foreach ($_POST['question'] as $key => $value) {
-    $point = mysqli_fetch_assoc($conn->query("SELECT * FROM Answers WHERE id = $key"))['points'];
+    $point = mysqli_fetch_assoc($conn->query("SELECT * FROM Answers WHERE id = $value"))['points'];
     $total += $point;
 }
 
