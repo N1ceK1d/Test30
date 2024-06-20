@@ -1,7 +1,8 @@
 <?php
 require("../php/conn.php");
 $decision_id = $_GET['decision_id'];
-$decision_data = "SELECT * FROM Decisions WHERE Decisions.id = $decision_id";
+$decision_data = mysqli_fetch_assoc($conn->query("SELECT * FROM Decisions WHERE id = $decision_id"));
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +12,7 @@ $decision_data = "SELECT * FROM Decisions WHERE Decisions.id = $decision_id";
     <title>Описание решения</title>
     <link rel="icon" href="../favicon.ico">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bootstrap/bootstrap-icons/font/bootstrap-icons.css">
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../js/jquery-3.7.1.min.js"></script>
     <script src="../js/jquery.mask.js"></script>
@@ -22,7 +24,34 @@ $decision_data = "SELECT * FROM Decisions WHERE Decisions.id = $decision_id";
                 <h2>Описание результата</h2>
             </div>
             <div class="body p-1 bg-white w-100">
+                <p><?= $decision_data['decision_text']; ?></p>
+                <hr>
+                <p><?= $decision_data['decision_descriprion']; ?></p>
+                <hr>
+                <?php
+                $files = $conn->query("SELECT * FROM Decisions_File WHERE decision_id = {$decision_data['id']}");
+                foreach ($files as $file):
+                    $file_extension = pathinfo($file['file_name'], PATHINFO_EXTENSION);
+                    $icon_class = 'bi-file-earmark'; // Класс иконки по умолчанию
+                    if ($file_extension == 'pptx') {
+                        $icon_class = 'bi-file-earmark-ppt';
+                    } elseif ($file_extension == 'docx') {
+                        $icon_class = 'bi-file-earmark-word';
+                    }
+                    // И так далее для других типов файлов
+                ?>
+                    <div class="file-item border col-2 text-center">
+                        <i class="bi <?= $icon_class ?> text-center"></i>
+                        <br>
+                        <a href="../../files/<?= $file['file_name'] ?>" download="<?= $file['file_name'] ?>">
+                            <span><?= $file['file_name'] ?></span>
+                        </a>
+                        <br>
+                        <i class="bi bi-trash-fill text-danger" role='button' data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="<?php echo $file['id'];?>"></i>
+                    </div>
+                <?php endforeach; ?>
             </div>
+            <p class='text-center'>Или вы можете позвонить нам по телефону <a href="tel:+7 (000)000 00-00">+7 (000)000 00-00</a></p>
         </div>
         <div class="mb-3 text-center">
             <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">Узнать больше</button>
