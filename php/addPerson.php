@@ -2,13 +2,11 @@
 require('conn.php');
 
 $first_name = $_POST['first_name'];
-$last_name = $_POST['last_name'];
-$middle_name = $_POST['middle_name'];
 $phone = $_POST['phone'];
-$company_name = $_POST['company_name'];
+$employees_count = isset($_POST['employees_count']) ? $_POST['employees_count'] : 0 ;
 
-$sql = "INSERT INTO UsersData (first_name, last_name, middle_name, phone, company_name, user_time)
-VALUES ('$first_name', '$last_name', '$middle_name', '$phone', '$company_name', NOW())";
+$sql = "INSERT INTO UsersData (first_name, phone, employees_count, user_time)
+VALUES ('$first_name', '$phone', $employees_count, NOW())";
 
 if($conn->query($sql))
 {

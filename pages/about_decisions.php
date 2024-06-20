@@ -77,7 +77,7 @@ $decision_data = mysqli_fetch_assoc($conn->query("SELECT * FROM Decisions WHERE 
                 </div>
                 <div class="mb-3">
                     <label for="">Количество сотрудников</label>
-                    <input class='form-control' required='true' type="number" name="company_name" min='1'>
+                    <input class='form-control' required='true' type="number" name="employees_count" min='1'>
                 </div>
                 <input type="submit" class='btn btn-primary' value="Оставить заявку">
             </form>
