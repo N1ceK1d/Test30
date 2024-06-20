@@ -49,6 +49,14 @@ CREATE TABLE ResultsTexts (
 CREATE TABLE Decisions (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     decision_text LONGTEXT NOT NULL,
+    decision_descriprion LONGTEXT NOT NULL,
     block_id INT NOT NULL,
     FOREIGN KEY (block_id) REFERENCES Blocks (id)
+);
+
+CREATE TABLE Decisions_File (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    file_name VARCHAR(255) NOT NULL,
+    decision_id INT NOT NULL,
+    FOREIGN KEY (decision_id) REFERENCES Decisions(id)
 );

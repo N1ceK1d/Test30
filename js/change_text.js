@@ -6,9 +6,11 @@ $(document).ready(() => {
             if(!question_input.attr('readonly')) {
                 $(event.target).addClass('text-danger');
                 $(event.target).removeClass('text-primary');
+                question_input.addClass('border border-primary');
             } else {
                 $(event.target).addClass('text-primary');
                 $(event.target).removeClass('text-danger');
+                question_input.removeClass('border border-primary');
             }
         }
     })
