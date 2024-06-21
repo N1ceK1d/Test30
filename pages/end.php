@@ -15,6 +15,9 @@
             <div class="header bg-primary text-white p-1">
                 <h2>Спасибо, что оставили данные</h2>
             </div>
+            <div class='body bg-light p-1'>
+                <p>В скором времени мы вам позвоним</p>
+            </div>
         </div>
     </div>
 </body>

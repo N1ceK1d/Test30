@@ -24,7 +24,7 @@
                         <?php foreach ($conn->query("SELECT * FROM Answers WHERE question_id = ".$question['id']." ORDER BY id;") as $answer):?>
                             <div class="answer-item">
                                 <input type="radio" class='check_input' name="question[<?= $question['id'] ?>]" value="<?= $answer['id'] ?>">
-                                <label><?= $answer['answer_text'] ?> (<?= $answer['points'] ?>)</label>
+                                <label><?= $answer['answer_text'] ?></label>
                             </div>
                         <?php endforeach; ?>
                     </div>
