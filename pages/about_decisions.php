@@ -51,8 +51,11 @@ $decision_data = mysqli_fetch_assoc($conn->query("SELECT * FROM Decisions WHERE 
                     </div>
                 <?php endforeach; ?>
             </div>
-            <p class='text-center'>Вы можете позвонить нам по телефону <a href="tel:+7 987 253-98-35">+7 987 253-98-35</a></p>
-            <p class='text-center'>Или написать нам в <a href='https://wa.me/+79872539835'>WhatsApp</a> или в <a href="https://t.me/StrongBiznes">Телеграмм</a></p>
+            <?php
+                $contacts = mysqli_fetch_assoc($conn->query("SELECT * FROM Company_Info;"));
+            ?>
+            <p class='text-center'>Вы можете позвонить нам по телефону <a href="tel:<?= $contacts['phone'] ?>">+7 987 253-98-35</a></p>
+            <p class='text-center'>Или написать нам в <a href='<?= $contacts['whats_app'] ?>'>WhatsApp</a> или в <a href="<?= $contacts['tg_link'] ?>">Телеграмм</a></p>
         </div>
         <div class="mb-3 text-center">
             <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">Узнать больше</button>

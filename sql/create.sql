@@ -60,3 +60,10 @@ CREATE TABLE Decisions_File (
     decision_id INT NOT NULL,
     FOREIGN KEY (decision_id) REFERENCES Decisions(id)
 );
+
+CREATE TABLE Company_Info (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    phone VARCHAR(255) NOT NULL,
+    whats_app VARCHAR(255) NOT NULL,
+    tg_link VARCHAR(255) NOT NULL
+);
